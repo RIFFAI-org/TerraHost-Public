@@ -136,7 +136,7 @@
 ### Request Processing Pipeline
 ```
 1. CORS Middleware
-2. Rate Limiting (to be implemented)
+2. Rate Limiting (implemented for API keys)
 3. Request Validation
 4. JWT Token Verification
 5. Session Validation
@@ -199,33 +199,27 @@ SESSION_SECRET=your-session-secret
 
 ### Security Headers (to be implemented)
 ```javascript
-// Security headers to add
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "https:"],
-    },
-  },
-  hsts: {
-    maxAge: 31536000,
-    includeSubDomains: true,
-    preload: true
-  }
-}));
+// Security headers to add (helmet package installed but not implemented)
+// Current: Basic CORS protection
+// Future: Add helmet for comprehensive security headers
+// Note: helmet package is in package.json but not used in app.js
 ```
+
+### Current Security Implementation
+- **CORS**: Basic cross-origin protection
+- **Session Security**: Secure session configuration
+- **JWT Security**: Token-based authentication
+- **Rate Limiting**: API key rate limiting (100 req/15min)
 
 ---
 
 ## Incident Response
 
 ### Security Incident Detection
-1. **Automated Monitoring**: System health checks
-2. **Log Analysis**: Pattern detection in logs
+1. **Automated Monitoring**: System health checks (basic implementation)
+2. **Log Analysis**: Manual log analysis (no automated pattern detection)
 3. **User Reports**: Security issue reporting
-4. **External Alerts**: Third-party security services
+4. **External Alerts**: Third-party security services (planned)
 
 ### Response Procedures
 1. **Detection**: Identify security incident
@@ -250,17 +244,17 @@ app.use(helmet({
 - **Session Storage**: Database-backed for scalability
 - **File Storage**: Nextcloud clustering support
 - **Database**: Connection pooling (2-10 connections)
-- **Caching**: Redis for session caching (future)
+- **Caching**: Redis for session caching (planned, not implemented)
 
 ---
 
 ## Continuous Security
 
 ### Security Updates
-- **Dependencies**: Regular security updates
-- **Code Reviews**: Security-focused code reviews
-- **Penetration Testing**: Regular security assessments
-- **Vulnerability Scanning**: Automated security scans
+- **Dependencies**: Regular security updates (manual)
+- **Code Reviews**: Security-focused code reviews (manual)
+- **Penetration Testing**: Regular security assessments (planned)
+- **Vulnerability Scanning**: Automated security scans (planned)
 
 ### Compliance Monitoring
 - **Audit Logs**: Comprehensive audit trail
